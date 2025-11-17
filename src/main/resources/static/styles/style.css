@@ -1,0 +1,385 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: Momo Trust Display, serif;
+
+    background: #151515;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #e5e5e5;
+}
+
+.hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    height: 100vh;
+    justify-content: center; /* centrerer stregen horisontalt */
+    align-items: center;
+    gap: 2em;
+}
+
+
+.hero-label {
+    font-size: 3em;
+    color: white;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    min-height: 8lh;
+    border-radius: 12px;
+    border: 1px solid #444;
+    background-color: #1e1e1e;
+    padding: 16px;
+}
+
+.hero-textarea {
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    min-height: 4lh;
+    background-color: #1e1e1e;
+    color: white;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    field-sizing: content;
+
+}
+
+.submit-button-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    min-width: 100%;
+    min-height: 40px;
+}
+
+.submit-btn {
+    padding: 5px 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 0;
+    background-color: hsl(261deg 80% 48%);
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    transition: all 0.5s ease;
+}
+
+.submit-btn a{
+    color: white;
+    font-size: 14px;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.submit-btn:hover {
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+}
+
+.submit-btn:active {
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+.input-wrapper {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.input-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-up {
+    opacity: 0;                 /* starter usynlig */
+    transform: translateY(20px); /* starter lidt nede */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* fade + glide */
+}
+
+.fade-up.visible {
+    opacity: 1;                 /* bliver synlig */
+    transform: translateY(0);    /* glider til korrekt position */
+}
+
+
+.loader-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 15px;
+}
+
+/* Slider bars */
+.slider {
+    overflow: hidden;
+    background-color: white;
+    height: 100px;
+    width: 30px;
+    border-radius: 30px;
+    position: relative;
+}
+
+/* The moving dot inside each slider */
+.slider::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.3),
+    0px 420px 0 400px #2697f3,
+    inset 0px 0px 0px rgba(0, 0, 0, 0.1);
+    animation: animateSlider 2.5s ease-in-out infinite;
+}
+
+/* Assign delays using unique slider classes */
+.slider-0::before { animation-delay: -2s; }
+.slider-1::before { animation-delay: -1.5s; }
+.slider-2::before { animation-delay: -1s; }
+.slider-3::before { animation-delay: -0.5s; }
+.slider-4::before { animation-delay: 0s; }
+
+/* Animation keyframes */
+@keyframes animateSlider {
+    0% {
+        transform: translateY(250px);
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(250px);
+        filter: hue-rotate(180deg);
+    }
+}
+
+
+.popup-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0,0,0,0.85);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    z-index: 9999;
+}
+
+.popup-message.visible {
+    opacity: 1;
+}
+
+.page-storypicker {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.hero-storypicker {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 100px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.storypicker-label {
+    margin-top: 50px;
+    opacity: 0;                        /* Start usynlig */
+    animation: fadeIn 1.5s ease forwards;
+    font-size: 3em;
+    color: white;
+}
+
+
+/* Selve animationen */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(100px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.story-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 650px;
+    width: 550px;
+    gap: 10px;
+    border: 2px solid #444;
+    border-radius: 12px;
+    opacity: 0;
+    transform: translateY(20px);       /* starter lidt nede */
+    animation: fadeUp 0.8s ease forwards;
+    background-color: #1e1e1e;
+}
+
+/* selve fade-effekten */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* forskudte animationer for hvert kort */
+.story-card:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.story-card:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.story-card:nth-child(3) {
+    animation-delay: 0.9s;
+}
+
+.card-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    padding: 10px;
+    font-size: 2em;
+    font-family: Momo Trust Display, serif;
+    border-bottom: 2px solid #444; /* <-- farven og tykkelsen på stregen */
+
+}
+
+.card-tldr-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.5em;
+    font-family: Momo Trust Display, serif;
+}
+
+.card-tldr {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 150px;
+    width: 100%;
+    background-color: #1e1e1e;
+    color: white;
+    padding: 10px 16px;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    outline: none;
+    resize: none;
+    border: none;
+    border-bottom: 2px solid #444; /* <-- farven og tykkelsen på stregen */
+}
+
+.card-story-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.5em;
+    font-family: Momo Trust Display, serif;
+}
+
+.card-story {
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    height: 250px;
+    background-color: #1e1e1e;
+    color: white;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    outline: none;
+    resize: none;
+    border-bottom: 2px solid #444; /* <-- farven og tykkelsen på stregen */
+}
+
+.card-button {
+    padding: 5px 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 0;
+    background-color: hsl(261deg 80% 48%);
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    transition: all 0.5s ease;
+    margin-top: 10px;
+}
+
+.card-button a{
+    color: white;
+    font-size: 20px;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.card-button:hover {
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+}
+
+.card-button:active {
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
