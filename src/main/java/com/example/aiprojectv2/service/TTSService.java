@@ -55,7 +55,7 @@ public class TTSService {
                                 """
                                 {
                                     "model": "gpt-4o-mini-tts",
-                                    "voice": "onyx"
+                                    "voice": "onyx",
                                     "input": "%s"
                                 }
                                 """.formatted(chunk)

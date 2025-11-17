@@ -47,7 +47,7 @@ public class TTSController {
         }
 
         // 1. Paths til input/output videoer
-        Path inputVideo = Path.of("src/main/resources/static/videos/MinecraftParkour.mp4").toAbsolutePath();
+        Path inputVideo = Path.of("src/main/resources/static/video/MinecraftParkour.mp4").toAbsolutePath();
         Path outputVideo = Path.of("src/main/resources/static/videos/output-MinecraftParkour.mp4").toAbsolutePath();
         // 2. Læg TTS på video
         Path finalVideo = ttsService.addTtsToVideo(storyText, inputVideo, outputVideo);
